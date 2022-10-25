@@ -1,16 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { sampleText } from './sampleText';
+
 function App() {
   return (
     <div className="container">
       <div className="row">
         <div className="col-sm-6">
-          <textarea rows="35" className="form-control"></textarea>
+          <textarea rows="35" className="form-control" value={sampleText}></textarea>
         </div>
-        <div className="col-sm-6">
-          <h1>Résultat</h1>
-        </div>
+        <div className="col-sm-6">{sampleText}</div>
       </div>
     </div>
   );
