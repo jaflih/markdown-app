@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 
 import { sampleText } from './sampleText';
 
@@ -10,13 +11,21 @@ class App extends Component {
     text: sampleText,
   };
 
+  componentDidMount() {
+    console.log('hello');
+  }
+
+  componentDidUpdate() {
+    console.log('update');
+  }
+
   handleChange = (event) => {
     const text = event.target.value;
     this.setState({ text });
   };
 
   renderText = (text) => {
-    const __html = marked(text, { sanitize: true });
+    const __html = DOMPurify.sanitize(marked(text));
     return { __html };
   };
 
