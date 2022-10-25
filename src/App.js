@@ -12,11 +12,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log('hello');
+    const text = localStorage.getItem('text');
+
+    if (text) {
+      this.setState({ text });
+    } else {
+      this.setState({ text: sampleText });
+    }
   }
 
   componentDidUpdate() {
-    console.log('update');
+    const { text } = this.state;
+    localStorage.setItem('text', text);
   }
 
   handleChange = (event) => {
